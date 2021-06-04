@@ -1,25 +1,31 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import TransactionScreen from './screens/BookTransactionScreen'
-import SearchScreen from './screens/BookTransactionScreen'
-import { createAppContainer } from 'react-navigation';
+import * as React from 'react';
+import { Text, View, StyleSheet,Image } from 'react-native';
+import {createAppContainer,createSwitchNavigator} from 'react-navigation';
+import ScanScreen from './Screens/ScanScreen';
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 export default class App extends React.Component {
-  render() {
+
+  render() { 
+
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
+
+      <SafeAreaProvider>
+      <View>
+        <AppContainer/>
       </View>
+      </SafeAreaProvider>
+
     );
+
   }
+
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+var AppNavigator = createSwitchNavigator({
 
+  ScanScreen:ScanScreen
+  
 });
+
+const AppContainer = createAppContainer(AppNavigator);
